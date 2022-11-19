@@ -9,7 +9,9 @@
 var factorial = function(n) {
   if (n < 0) {
     return null;
-  } else if (n === 1 || n === 0) {
+  } else if (n === 0) {
+    return 1;
+  } else if (n === 1) {
     return 1;
   }
 
@@ -20,25 +22,57 @@ var factorial = function(n) {
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
   var copy = array.slice();
-  // base case
-  // if there is only one element in the array
+
   if (copy.length === 0) {
     return 0;
   } else if (copy.length === 1) {
-    return copy.pop();
+    return copy[0];
   }
-  // return invokation of array minus one element
-  return copy.pop() + sum(copy);
+
+return copy.pop() + sum(copy);
 
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
+
 var arraySum = function(array) {
+  var total = 0;
+
+  if (array.length === 0) {
+    return 0;
+  }
+
+  // iterate over input array - for each item
+  array.forEach(function(item) {
+    // if item is not an array
+    if (!Array.isArray(item)) {
+      // return sum is equal to sum plus item
+      return total += item;
+      // otherwise
+    } else {
+      // return sum is equal to sum plus calling sum on arraySum
+      return total += arraySum(item);
+    }
+  });
+
+  return total;
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  // if (Number.isInteger(n / 2)) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+  // if n is equal to 1
+  if (n === 1) {
+    return false;
+  } else {
+    isEven(n -1);
+    return true;
+  }
 };
 
 // 5. Sum all integers below a given integer.
@@ -270,3 +304,25 @@ var mergeSort = function(array) {
 // obj1 === obj2 // false
 var clone = function(input) {
 };
+
+
+
+// var factorial = function(n) {
+//   if (n < 0) {
+//     return null;
+//   } else if (n === 1 || n === 0) {
+//     return 1;
+//   }
+
+//   return n * factorial(n - 1);
+// };
+
+// var copy = array.slice();
+
+//   if (copy.length === 0) {
+//     return 0;
+//   } else if (copy.length === 1) {
+//     return copy.pop();
+//   }
+
+//   return copy.pop() + sum(copy);
