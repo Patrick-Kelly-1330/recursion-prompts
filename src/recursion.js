@@ -89,13 +89,6 @@ var sumBelow = function(n) {
   return n - 1 + sumBelow(n - 1);
 };
 
-
-
-
-
-
-
-
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
@@ -144,7 +137,7 @@ var exponent = function(base, exp) {
   }
 
   if (exp < 0) {
-    return 1 / base * (exponent(base, exp + 1));
+    return Number((1 / base * (exponent(base, exp + 1))).toFixed(5));
   }
 };
 
