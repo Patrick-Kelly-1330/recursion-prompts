@@ -141,13 +141,19 @@ var exponent = function(base, exp) {
   }
 };
 
-
-
 // 8. Determine if a number is a power of two.
-// powerOfTwo(1); // true
-// powerOfTwo(16); // true
+// powerOfTwo(1); // true (2 * 0)
+// powerOfTwo(16); // true (2 * 4)
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  n = Math.abs(n);
+  // if n is equal to 1
+  if (n === 1) {
+    return true;
+  } else if (n <= 0) {
+    return false;
+  }
+  return powerOfTwo(n / 2);
 };
 
 // 9. Write a function that reverses a string.
