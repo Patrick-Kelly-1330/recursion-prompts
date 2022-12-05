@@ -173,6 +173,7 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  string = string.toLowerCase();
   // if length of string is equal to 0 or 1
   if (string.length === 0 || string.length === 1) {
     return true;
