@@ -174,13 +174,12 @@ var reverse = function(string) {
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
   string = string.toLowerCase();
-  // if length of string is equal to 0 or 1
+
   if (string.length === 0 || string.length === 1) {
     return true;
   }
 
   if (string[0] === string[string.length - 1]) {
-    console.log(string);
     return palindrome(string.slice(1, -1));
   }
 
@@ -266,6 +265,25 @@ var countKeysInObj = function(obj, key) {
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
 var countValuesInObj = function(obj, value) {
+  console.log('obj ', obj);
+  console.log('value ', value);
+  // create count
+  var count = 0;
+  // iterate over object values
+  for (var key in obj) {
+    // if value is an object
+    if (typeof obj[key] === 'object') {
+      // set count equal to count plus return value of calling function on value
+      count += countValuesInObj(obj[key], value);
+    }
+    // if value is equal to input value
+    if (obj[key] === value) {
+      // increase count by one
+      count ++;
+    }
+  }
+  // return count
+  return count;
 };
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
